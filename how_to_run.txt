@@ -1,0 +1,1 @@
+python demo_video.py --input_path /home/dwaynerei/td/td_dataset/muscles_of_facial/0.mp4 --out_path results/ --checkpoint pretrained_models/SMIRK_em1.pt --crop --render_orig

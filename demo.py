@@ -106,8 +106,18 @@ if __name__ == '__main__':
 
     outputs = smirk_encoder(cropped_image)
 
-
+    image_name = os.path.splitext(os.path.basename(args.input_path))[0]
     flame_output = flame.forward(outputs)
+    # === Extract 2D and 3D landmarks from FLAME output ===
+    landmarks_2d = flame_output['landmarks_mp'].detach().cpu().numpy()[0]   # (N, 2)
+    vertices_3d  = flame_output['vertices'].detach().cpu().numpy()[0]       # (N, 3)
+
+    # === Save per-frame landmarks ===
+    np.save(f"{args.out_path}/{image_name}_landmarks2d.npy", landmarks_2d)
+    np.save(f"{args.out_path}/{image_name}_vertices3d.npy", vertices_3d)
+
+    print(f"[INFO] Saved landmarks for {image_name}")
+
     renderer_output = renderer.forward(flame_output['vertices'], outputs['cam'],
                                         landmarks_fan=flame_output['landmarks_fan'], landmarks_mp=flame_output['landmarks_mp'])
     

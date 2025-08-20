@@ -1,0 +1,11 @@
+--2025-07-27 14:08:54--  https://download.is.tue.mpg.de/download.php?domain=flame
+Resolving download.is.tue.mpg.de (download.is.tue.mpg.de)... 192.124.27.139
+Connecting to download.is.tue.mpg.de (download.is.tue.mpg.de)|192.124.27.139|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘download.php?domain=flame’
+
+download.php?domain=flame                  [<=>                                                                         ]       0  --.-KB/s               download.php?domain=flame                  [ <=>                                                                        ]      49  --.-KB/s    in 0s      
+
+2025-07-27 14:08:56 (30.8 MB/s) - ‘download.php?domain=flame’ saved [49]
+

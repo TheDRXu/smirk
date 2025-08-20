@@ -139,6 +139,27 @@ if __name__ == '__main__':
         outputs = smirk_encoder(cropped_image)
 
         flame_output = flame.forward(outputs)
+        outputs = smirk_encoder(cropped_image)
+
+        flame_output = flame.forward(outputs)
+
+        # ✅ Save landmarks here
+        frame_idx = int(cap.get(cv2.CAP_PROP_POS_FRAMES)) - 1
+        landmarks_2d = flame_output['landmarks_mp'].detach().cpu().numpy()[0]
+        vertices_3d  = flame_output['vertices'].detach().cpu().numpy()[0]
+        if not os.path.exists(os.path.join(args.out_path, "landmarks_00")):
+            os.makedirs(os.path.join(args.out_path, "landmarks_00"))
+
+        np.save(f"{args.out_path}/landmarks_00/frame_{frame_idx:04d}_2d.npy", landmarks_2d)
+        np.save(f"{args.out_path}/landmarks_00/frame_{frame_idx:04d}_3d.npy", vertices_3d)
+        print(f"[INFO] Saved landmarks for frame {frame_idx}")
+
+        renderer_output = renderer.forward(
+            flame_output['vertices'], outputs['cam'],
+            landmarks_fan=flame_output['landmarks_fan'],
+            landmarks_mp=flame_output['landmarks_mp']
+        )
+
         renderer_output = renderer.forward(flame_output['vertices'], outputs['cam'],
                                             landmarks_fan=flame_output['landmarks_fan'], landmarks_mp=flame_output['landmarks_mp'])
         
