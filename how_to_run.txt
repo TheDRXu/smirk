@@ -1,1 +1,10 @@
-python demo_video.py --input_path /home/dwaynerei/td/td_dataset/muscles_of_facial/0.mp4 --out_path results/ --checkpoint pretrained_models/SMIRK_em1.pt --crop --render_orig
+python demo_video.py --input_path /home/dwaynerei/smirk/audio_detection/dataset/video/cropped_2.mp4 --out_path results/interview --checkpoint pretrained_models/SMIRK_em1.pt --crop --render_orig
+
+
+#crop the video and run SMIRK face reconstruction
+python run.py \
+  --input audio_detection/dataset/video/2.mp4 \
+  --output audio_detection/dataset/cropped_video/cropped_2_smirk.mp4 \
+  --checkpoint pretrained_models/SMIRK_em1.pt \
+  --landmark_dir_name landmarks_02 \
+  --crop --render_orig
