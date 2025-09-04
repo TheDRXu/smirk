@@ -1,0 +1,8 @@
+python3 transcribe_wav.py --wav dataset/audio/5.wav --model base --out_dir dataset/output 
+python3 vad_segments.py --wav dataset/audio/5.wav --out_csv dataset/output/segments_vad_5.csv
+python3 train_and_predict_ecapa.py   --predict_wav dataset/audio/5.wav   --predict_segments dataset/output/segments_vad_5.csv   --out_preds dataset/output/vad_labeled_5.csv   --save_model dataset/output/role_model_ecapa.joblib
+python3 overlay_speaker_label.py \
+    --video dataset/video/5.mp4 \
+    --csv dataset/output/vad_labeled_5.csv \
+    --wav dataset/audio/5.wav \
+    --out dataset/labeled_video/labeled_5.mp4

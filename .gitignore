@@ -12,3 +12,4 @@ assets/MEAD_lists.pkl
 __pycache__/
 audio_detection/dataset
 results/
+audio_detection/embeddings_cache

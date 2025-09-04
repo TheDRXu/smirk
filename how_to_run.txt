@@ -3,8 +3,8 @@ python demo_video.py --input_path /home/dwaynerei/smirk/audio_detection/dataset/
 
 #crop the video and run SMIRK face reconstruction
 python run.py \
-  --input audio_detection/dataset/video/2.mp4 \
-  --output audio_detection/dataset/cropped_video/cropped_2_smirk.mp4 \
+  --input audio_detection/dataset/video/1.mp4 \
+  --output audio_detection/dataset/cropped_video/cropped_1_smirk.mp4 \
   --checkpoint pretrained_models/SMIRK_em1.pt \
-  --landmark_dir_name landmarks_02 \
+  --landmark_dir_name landmarks_01 \
   --crop --render_orig
